@@ -1,9 +1,1 @@
-build:
-  python_version: "3.10"
-  python_packages:
-    - torch
-    - diffusers
-    - transformers
-    - accelerate
-    - Pillow
-predict: "predict.py:Predictor"
+delete duplicate cog.yaml from /cog.yaml
