@@ -1,5 +1,6 @@
-# Use a prebuilt Docker image for cog-stable-diffusion
-FROM r8.im/octopenyo/cog-stable-diffusion:gpu
+FROM r8.im/replicate/cog-stable-diffusion:latest
 
-# Set the default command to run the Cog server
+COPY . /src
+WORKDIR /src
+
 ENTRYPOINT ["cog", "serve"]
