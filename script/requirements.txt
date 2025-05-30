@@ -1,6 +1,1 @@
-cog==0.7.4
-torch==2.1.2
-transformers==4.39.3
-diffusers==0.25.0
-accelerate==0.29.2
-Pillow
+delete duplicate predict.py from /script
