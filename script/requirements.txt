@@ -1,1 +1,1 @@
-delete duplicate predict.py from /script
+delete duplicate requirements.txt from /requirements.txt
