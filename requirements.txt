@@ -1,6 +1,14 @@
+# Diffusers and Transformers (for Stable Diffusion)
+diffusers==0.15.0
+transformers==4.29.0
+accelerate==0.20.3
+safetensors==0.3.1
+
+# Torch - CPU version (Cloud Run doesn't support GPU)
+torch==2.0.1+cpu
+torchvision==0.15.2+cpu
+torchaudio==2.0.2+cpu
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# Cog for deployment
 cog==0.7.4
-torch==2.1.2
-transformers==4.39.3
-diffusers==0.25.0
-accelerate==0.29.2
-Pillow
