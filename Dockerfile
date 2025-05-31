@@ -1,5 +1,5 @@
 # Use official Cog base image with cog pre-installed
-FROM ghcr.io/replicate/cog:0.8.1
+FROM replicate/cog:0.8.1
 
 # Install any system packages you need
 RUN apt-get update && apt-get install -y git
