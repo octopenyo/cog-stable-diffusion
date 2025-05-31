@@ -1,11 +1,16 @@
-# Use Cog base image that includes Cog + Torch + Diffusers
-FROM r8.im/replicate/cog-stable-diffusion
+# Use official Cog base image with cog pre-installed
+FROM r8.im/cog/cog:0.7.2
 
-# Optional: Copy your model weights if needed
-# COPY your-model-weights /weights
+# Install any system packages you need
+RUN apt-get update && apt-get install -y git
 
-# Make sure your code is included
-COPY . .
+# Install your Python dependencies
+COPY requirements.txt /code/requirements.txt
+RUN pip install -r /code/requirements.txt
+
+# Copy in everything else (including cog.yaml and predict.py)
+COPY . /code
+WORKDIR /code
 
 # Start the cog server
 ENTRYPOINT ["cog", "serve"]
