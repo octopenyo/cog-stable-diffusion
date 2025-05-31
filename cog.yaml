@@ -1,16 +1,17 @@
 build:
-  gpu: true
-  cuda: "11.8"
   python_version: "3.10"
   python_packages:
-    - torch==2.2.2
-    - torchvision==0.17.2
-    - diffusers==0.27.2
-    - transformers==4.40.1
-    - accelerate==0.29.3
-    - safetensors==0.4.3
+    - torch==2.1.2
+    - torchvision==0.16.2
+    - diffusers==0.25.0
+    - transformers==4.36.2
+    - accelerate==0.27.2
+    - safetensors==0.4.1
+    - xformers==0.0.23  # Safe to include even on CPU, just won't be used
+    - Pillow==10.2.0
+    - numpy==1.26.4
+    - scipy==1.12.0
     - ftfy==6.2.0
-    - scipy==1.13.0
-    - huggingface-hub==0.23.0
-
-predict: "predict.py:Predictor"
+    - sentencepiece==0.2.0
+    - opencv-python==4.9.0.80
+predict: predict.py
