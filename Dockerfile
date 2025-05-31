@@ -1,16 +1,28 @@
-# Use official Cog base image with cog pre-installed
-FROM python:3.10-slim  # Lightweight alternative to Cog
+# Use lightweight Python 3.10 base image (no Cog dependency)
+FROM python:3.10-slim
 
-# Install any system packages you need
-RUN apt-get update && apt-get install -y git
+# Install system dependencies
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends git gcc python3-dev && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-# Install your Python dependencies
-COPY requirements.txt /code/requirements.txt
-RUN pip install -r /code/requirements.txt
-
-# Copy in everything else (including cog.yaml and predict.py)
-COPY . /code
+# Set working directory
 WORKDIR /code
 
-# Start the cog server
+# Copy requirements first (for layer caching)
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy all files
+COPY . .
+
+# Set environment variables for CPU-only operation
+ENV COG_WEIGHTS_CACHE="/code/weights" \
+    COG_MODEL_CACHE="/code/model-cache" \
+    TORCH_DEVICE="cpu"
+
+# Start the server (fixed typo from EVERYPOINT to ENTRYPOINT)
 ENTRYPOINT ["cog", "serve"]
