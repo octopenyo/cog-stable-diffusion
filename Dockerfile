@@ -1,5 +1,5 @@
 # Use official Cog base image with cog pre-installed
-FROM r8.im/cog/cog:0.7.2
+FROM docker.io/replicate/cog:0.8.1
 
 # Install any system packages you need
 RUN apt-get update && apt-get install -y git
