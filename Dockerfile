@@ -1,23 +1,11 @@
-# Use a slim Python image as base
-FROM python:3.10-slim
+# Use Cog base image that includes Cog + Torch + Diffusers
+FROM r8.im/replicate/cog-stable-diffusion
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    git \
-    wget \
- && rm -rf /var/lib/apt/lists/*
+# Optional: Copy your model weights if needed
+# COPY your-model-weights /weights
 
-# Install Cog CLI
-RUN pip install cog
-
-# Set working directory
-WORKDIR /app
-
-# Copy all files
+# Make sure your code is included
 COPY . .
 
-# Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Start cog server
-CMD ["cog", "serve"]
+# Start the cog server
+ENTRYPOINT ["cog", "serve"]
