@@ -1,5 +1,5 @@
 # Use official Cog base image with cog pre-installed
-FROM ghcr.io/replicate/cog:0.8.0
+FROM python:3.10-slim  # Lightweight alternative to Cog
 
 # Install any system packages you need
 RUN apt-get update && apt-get install -y git
