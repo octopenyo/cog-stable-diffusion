@@ -1,15 +1,25 @@
-# Core diffusion libs
-diffusers==0.15.0
-transformers==4.29.0
-accelerate==0.20.3
-safetensors==0.3.1
+# Core Stable Diffusion libraries
+diffusers==0.25.0
+transformers==4.36.2
+accelerate==0.27.2
+safetensors==0.4.1
+xformers==0.23  # Safe on CPU (won't be used but prevents errors)
 
-# Precompiled PyTorch CPU wheels
-torch==2.0.1+cpu
-torchvision==0.15.2+cpu
-torchaudio==2.0.2+cpu
+# PyTorch CPU-only (specific versions from cog.yaml)
+torch==2.1.2
+torchvision==0.16.2
+torchaudio==2.0.2
 --extra-index-url https://download.pytorch.org/whl/cpu
 
-# Deployment tool
-cog==0.8.1
+# Image processing
+pillow==10.2.0
+opencv-python==4.9.0.80
 
+# Utilities
+numpy==1.26.4
+scipy==1.12.0
+ftfy==6.2.0
+sentencepiece==0.2.0
+
+# Deployment
+cog==0.8.1
